@@ -11,6 +11,113 @@ body {
   line-height: 1.6;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.access-gate {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: center;
+  animation: fadeIn 700ms ease both;
+}
+
+.access-gate.is-hiding {
+  animation: fadeOut 500ms ease forwards;
+}
+
+.access-card {
+  width: min(100%, 420px);
+  padding: 36px 28px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 12px 40px rgb(116 61 72 / 12%);
+  box-sizing: border-box;
+}
+
+.access-card h1 {
+  font-size: 32px;
+}
+
+.access-card label,
+.access-card input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.access-card label {
+  margin-bottom: 8px;
+}
+
+.access-card input {
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border: 1px solid #c9a9ad;
+  border-radius: 5px;
+  color: inherit;
+  font: inherit;
+}
+
+.access-error {
+  min-height: 1.6em;
+  margin-bottom: 0;
+  color: #a22d3d;
+}
+
+.page-content {
+  --page-fade-duration: 700ms;
+  opacity: 0;
+  transition: opacity var(--page-fade-duration) ease;
+}
+
+.page-content.is-visible {
+  opacity: 1;
+}
+
+#reasons h2,
+#reasons p {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1000ms ease, transform 1000ms ease;
+}
+
+#reasons h2.visible,
+#reasons p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#ending {
+  text-align: center;
+}
+
+#ending button {
+  display: block;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1000ms ease, transform 1000ms ease;
+}
+
+#ending button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#extra-note {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ending button {
+    transition-duration: 300ms;
+  }
+}
+
 header {
   padding: 18px;
   background-color: white;
@@ -102,6 +209,63 @@ footer {
   section {
     margin: 18px auto;
     padding: 30px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .access-gate {
+    animation-name: fadeOpacityIn;
+    animation-duration: 1000ms;
+  }
+
+  .access-gate.is-hiding {
+    animation-name: fadeOpacityOut;
+    animation-duration: 1000ms;
+  }
+
+  .page-content {
+    --page-fade-duration: 750ms;
+  }
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOpacityIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOpacityOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
   }
 }
 

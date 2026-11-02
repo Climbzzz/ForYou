@@ -8,30 +8,42 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    
-  </header>
-
-  <main>
-    <section id="home">
-      <p class="small-heading">A little website, made for you</p>
-      <h1>You make my world brighter.</h1>
-      <p>I made this page to remind you how special you are to me.</p>
-      <a class="button" href="WhyILoveYou.html">See why</a>
-    </section>
-
-    <section id="note">
-      <h2>A note for you</h2>
-      <p>Thank you for being exactly who you are. I'm so lucky to have you in my life. Open this after you're done reading the "see why" button.</p>
-      <button id="note-button" type="button">Read one last thing</button>
-      <p id="extra-note" hidden>
-        No matter what, No matter where, I hope you remember that you are loved and cared so deeply by me. Forever and Always.
-      </p>
-    </section>
+  <main id="access-gate" class="access-gate">
+    <form id="access-form" class="access-card">
+      <p class="small-heading">A little surprise</p>
+      <h1>This page is just for you.</h1>
+      <label for="access-code">Enter the code to open it</label>
+      <input id="access-code" name="code" type="password" autocomplete="off" required>
+      <button type="submit">Unlock</button>
+      <p id="access-error" class="access-error" role="alert" aria-live="polite"></p>
+    </form>
   </main>
 
-  <footer>
-    <p>Made with love ♥</p>
-  </footer>
+  <div id="site-content" class="page-content" hidden>
+    <header>
+    </header>
+
+    <main>
+      <section id="home">
+        <p class="small-heading">A little website, made for you</p>
+        <h1>You make my world brighter.</h1>
+        <p>I made this page to remind you how special you are to me.</p>
+        <a class="button" href="WhyILoveYou.html">See why</a>
+      </section>
+
+      <section id="note">
+        <h2>A note for you</h2>
+        <p>Thank you for being exactly who you are. I'm so lucky to have you in my life. Open this after you're done reading the "see why" button.</p>
+        <button id="note-button" type="button">Read one last thing</button>
+        <p id="extra-note" hidden>
+          No matter what, No matter where, I hope you remember that you are loved and cared so deeply by me. Forever and Always.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with love ♥</p>
+    </footer>
+  </div>
 </body>
 </html>

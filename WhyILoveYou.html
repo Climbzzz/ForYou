@@ -8,15 +8,25 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="WhyILoveYou.html">Why I Love You</a>
-      <a href="index.html">My Note</a>
-    </nav>
-  </header>
-  
-  <section id="reasons">
+  <main id="access-gate" class="access-gate">
+    <form id="access-form" class="access-card">
+      <p class="small-heading">A little surprise</p>
+      <h1>This page is just for you.</h1>
+      <label for="access-code">Enter the code to open it</label>
+      <input id="access-code" name="code" type="password" autocomplete="off" required>
+      <button type="submit">Unlock</button>
+      <p id="access-error" class="access-error" role="alert" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <div id="site-content" class="page-content" hidden>
+    <header>
+      <nav>
+        <a href="index.html">Back to Home</a>
+      </nav>
+    </header>
+
+    <section id="reasons">
     <h2>Some things I love about you</h2>
     <div>
       <p>You always know how to make me smile, no matter how heavy or exhausting my day has been.</p>
@@ -96,15 +106,19 @@
       <p class="big-gap-after"> </p>
       
       
-      <button id="note-button" type="button">Read one more thing</button>
-      <div id="extra-note" hidden>
-        <p>Truth is, I could write code for a million years and still never fit all the reasons why I love you into one page. </p>
-        <p>No matter how far down you scroll, my love for you goes deeper than this screen could ever reach. </p>
-        <p>Out of all eight billion people in the world, I'd want you every single time, in every single lifetime. </p>
-        <p>You are my favorite notification, my favorite person, and my forever twin flame. </p>
-        <p>You are my everything. And that will never change. I love you, so so so so much.</p>
+      <div id="ending">
+        <button id="note-button" type="button">Read one more thing</button>
+        <div id="extra-note" hidden>
+          <p>Truth is, I could write this code for a million years and still never fit all the reasons why I love you into one page. </p>
+          <p>No matter how far down you scroll, my love for you goes deeper than this screen could ever reach. </p>
+          <p>Out of all eight billion people in the world, I'd want you every single time, in every single lifetime. </p>
+          <p>You are my favorite notification, my favorite person, and my forever twin flame. </p>
+          <p>You are my everything. And that will never change. I love you, so so so so much.</p>
+          <p>.</p>
+        </div>
       </div>
     </div>
-</section>
+    </section>
+  </div>
 </body>
 </html>
