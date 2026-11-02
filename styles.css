@@ -1,4 +1,8 @@
 /* Change these colors to make the page your own. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   background-color: #fff8f5;
@@ -70,6 +74,10 @@ li {
   margin: 12px 0;
 }
 
+#reasons p:not(.big-gap-after):not(.bigger-gap-after) {
+  margin: 3rem 0;
+}
+
 #note {
   border-radius: 8px;
   background-color: #f5e5e2;
@@ -95,4 +103,12 @@ footer {
     margin: 18px auto;
     padding: 30px 20px;
   }
+}
+
+.big-gap-after {
+  margin-bottom: 60rem;
+}
+
+.bigger-gap-after {
+  margin-bottom: 200rem;
 }
