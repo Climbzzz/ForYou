@@ -1,11 +1,14 @@
 /* Change these colors to make the page your own. */
 html {
+  min-height: 100%;
   scrollbar-gutter: stable;
+  /* red at the bottom fading up to white at the top */
+  background: linear-gradient(to top, #ee8693 0%, #f8c3ca 35%, #fff8f5 100%) fixed;
 }
 
 body {
   margin: 0;
-  background-color: #fff8f5;
+  background: transparent;
   color: #382d2d;
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -69,6 +72,9 @@ body {
 }
 
 .letter-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
   display: grid;
   min-height: 100vh;
   place-items: center;
@@ -172,35 +178,13 @@ body {
 }
 
 .page-content {
-  --page-fade-duration: 700ms;
+  --page-fade-duration: 2000ms;
   opacity: 0;
   transition: opacity var(--page-fade-duration) ease;
 }
 
 .page-content.is-visible {
   opacity: 1;
-}
-
-.page-content.is-entering .page-entry-item {
-  opacity: 0;
-  transition: opacity 650ms ease;
-}
-
-.page-content.is-entering .page-entry-item.page-entry-visible {
-  opacity: 1;
-}
-
-#reasons h2,
-#reasons p {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 1000ms ease, transform 1000ms ease;
-}
-
-#reasons h2.visible,
-#reasons p.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 #ending {
@@ -210,29 +194,15 @@ body {
 #ending button {
   display: block;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1000ms ease, transform 1000ms ease;
-}
-
-#ending button.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 #extra-note {
   text-align: center;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  #ending button {
-    transition-duration: 300ms;
-  }
-}
-
 header {
   padding: 18px;
-  background-color: white;
+  background: transparent;
   text-align: center;
 }
 
@@ -260,6 +230,9 @@ section {
 
 .small-heading {
   color: #8c4f58;
+  font-size: 25px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
 }
 
 h1,
@@ -348,10 +321,6 @@ footer {
   .page-content {
     --page-fade-duration: 300ms;
   }
-
-  .page-content.is-entering .page-entry-item {
-    transition-duration: 300ms;
-  }
 }
 
 @keyframes textFadeIn {
@@ -401,4 +370,578 @@ footer {
 
 .bigger-gap-after {
   margin-bottom: 200rem;
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: #b52843;
+  opacity: 0;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  10% { opacity: 0.45; }
+  100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+/* Scroll fade: lines fade in as they enter view and fade out as they leave. */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+.scroll-fade.exited-top {
+  transform: translateY(-24px);
+}
+
+.scroll-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* WhyILoveYou ending: a full-screen block so the message sits in the middle. */
+#reasons #extra-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+#reasons #extra-note p {
+  margin: 1.1rem 0;
+}
+
+#to-top-button {
+  margin-top: 28px;
+}
+
+.press-image,
+.press-image:hover {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.press-image img {
+  display: block;
+  width: 180px;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Panda on the upper right side, tilted a little to the right. */
+.panda-corner {
+  position: fixed;
+  right: 24px;
+  top: 20vh;
+  z-index: 2;
+  text-align: center;
+}
+
+.panda-corner .press-image {
+  transform: rotate(12deg);
+  transform-origin: bottom center;
+}
+
+.panda-corner .press-image img {
+  width: 170px;
+}
+
+.panda-hint {
+  margin: 0;
+  color: #743d48;
+  font-size: 14px;
+}
+
+@media (max-width: 500px) {
+  .panda-corner {
+    right: 10px;
+    top: 14vh;
+  }
+
+  .panda-corner .press-image img {
+    width: 110px;
+  }
+}
+
+
+/* ---------- Sparkle trail ---------- */
+.sparkles {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 6px rgb(255 255 255 / 80%);
+  animation: sparkleFade 800ms ease-out forwards;
+}
+
+@keyframes sparkleFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1) rotate(var(--rot));
+  }
+}
+
+/* ---------- Cards and scroll reveal ---------- */
+.card-section {
+  background: rgb(255 255 255 / 55%);
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgb(116 61 72 / 14%);
+  text-align: center;
+}
+
+.reveal.will-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms ease, transform 800ms ease;
+}
+
+.reveal.will-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Co-op card ---------- */
+.coop-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.player {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+  max-width: 200px;
+  padding: 16px 10px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 20px rgb(116 61 72 / 12%);
+}
+
+.player-tag {
+  justify-self: center;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: #8c4f58;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+}
+
+.player-two .player-tag {
+  background: #c94359;
+}
+
+.player strong {
+  color: #743d48;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+}
+
+.player-ready {
+  color: #8c4f58;
+  font-size: 13px;
+}
+
+.coop-plus {
+  color: #b52843;
+  font-size: 28px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  align-items: center;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.stat-label {
+  color: #382d2d;
+}
+
+.stat-value {
+  color: #8c4f58;
+  font-weight: bold;
+}
+
+.stat-row.is-full .stat-value {
+  color: #b52843;
+}
+
+.bar {
+  grid-column: 1 / -1;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f5e5e2;
+}
+
+.bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ee8693, #b52843);
+  transition: width 1100ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.coop-message {
+  min-height: 1.6em;
+  margin: 20px 0 14px;
+  color: #743d48;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.coop-message.show {
+  opacity: 1;
+}
+
+.coop-start:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- Love coupons ---------- */
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 22px 0 10px;
+}
+
+.coupon {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 18px 14px;
+  overflow: hidden;
+  border: 2px dashed #c9a9ad;
+  border-radius: 12px;
+  background: white;
+  color: #743d48;
+  text-align: center;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.coupon:hover {
+  background: white;
+  box-shadow: 0 10px 22px rgb(116 61 72 / 18%);
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.coupon-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.coupon-sub {
+  color: #8c4f58;
+  font-size: 13px;
+}
+
+.coupon-stamp {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: rotate(-14deg) scale(1.8);
+}
+
+.coupon-stamp span {
+  padding: 2px 12px;
+  border: 3px solid #b52843;
+  border-radius: 8px;
+  color: #b52843;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.coupon.is-redeemed {
+  border-color: #e3b5ba;
+  background: #fdf0ee;
+  color: #b59a9e;
+  cursor: default;
+}
+
+.coupon.is-redeemed:hover {
+  background: #fdf0ee;
+  box-shadow: none;
+  transform: none;
+}
+
+.coupon.is-redeemed .coupon-stamp {
+  opacity: 1;
+  transform: rotate(-14deg) scale(1);
+  transition: opacity 200ms ease, transform 300ms cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.link-button,
+.link-button:hover {
+  padding: 6px;
+  background: none;
+  color: #8c4f58;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: #743d48;
+}
+
+/* ---------- Reason button ---------- */
+.reason-card {
+  display: grid;
+  min-height: 96px;
+  margin: 20px 0;
+  padding: 20px;
+  place-items: center;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 20px rgb(116 61 72 / 12%);
+  color: #743d48;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.reason-card.pop {
+  animation: popIn 450ms cubic-bezier(.3, 1.5, .5, 1);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .coupon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coop-card {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill {
+    transition-duration: 300ms;
+  }
+
+  .reveal.will-reveal {
+    transition-duration: 300ms;
+  }
+}
+
+
+/* ---------- Spin the wheel ---------- */
+.wheel-wrap {
+  position: relative;
+  width: min(100%, 300px);
+  aspect-ratio: 1;
+  margin: 24px auto 18px;
+}
+
+.wheel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px white, 0 12px 28px rgb(116 61 72 / 28%);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-top: 22px solid #8e1e32;
+  border-right: 11px solid transparent;
+  border-left: 11px solid transparent;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 25%));
+  transform: translateX(-50%);
+}
+
+.wheel-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: 17%;
+  height: 17%;
+  place-items: center;
+  border: 3px solid #f4c7c9;
+  border-radius: 50%;
+  background: #8e1e32;
+  color: #fff8f5;
+  font-size: clamp(14px, 1.4vw, 20px);
+  transform: translate(-50%, -50%);
+}
+
+.wheel-result {
+  min-height: 3em;
+  margin: 8px 0 12px;
+  color: #743d48;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+#wheel-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* On wide, tall screens the wheel sits on the left side, like the panda on the right.
+   On smaller screens it's a normal card in the page so it never covers the text.
+   The sizes below grow with the screen: clamp(smallest, scales with screen, biggest). */
+@media (min-width: 1100px) and (min-height: 640px) {
+  .wheel-section {
+    position: fixed;
+    top: 14vh;
+    left: 50px;
+    width: clamp(220px, 22vw, 320px);
+    margin: 0;
+    padding: 18px 16px 20px;
+  }
+
+  .wheel-section h2 {
+    margin: 0.2em 0;
+    font-size: 24px;
+  }
+
+  .wheel-section .wheel-wrap {
+    width: clamp(170px, 18vw, 270px);
+    margin: 24px auto 16px;
+  }
+
+  .wheel-section .wheel-result {
+    min-height: 2.8em;
+    font-size: 18px;
+  }
+}
+
+
+/* ---------- Proposal page ---------- */
+.proposal-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.proposal-card {
+  width: min(100%, 560px);
+  padding: 48px 28px;
+  border-radius: 18px;
+  background: rgb(255 255 255 / 70%);
+  box-shadow: 0 12px 40px rgb(116 61 72 / 16%);
+  box-sizing: border-box;
+}
+
+.proposal-card h1 {
+  margin: 0.3em 0;
+}
+
+.proposal-message {
+  margin: 18px 0 28px;
+}
+
+.proposal-buttons {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 90px;
+}
+
+#yes-button {
+  background-color: #b52843;
+  font-size: 18px;
+  transition: transform 200ms ease;
+}
+
+#yes-button:hover {
+  background-color: #8e1e32;
+}
+
+#no-button {
+  transition: transform 250ms ease;
+}
+
+.proposal-answer {
+  animation: popIn 600ms cubic-bezier(.3, 1.5, .5, 1);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: #8c4f58;
+  font-size: 14px;
 }

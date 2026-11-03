@@ -6,6 +6,9 @@
   <title>A Little Gift</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
   <main id="access-gate" class="access-gate">
@@ -32,6 +35,14 @@
   </main>
 
   <div id="site-content" class="page-content" hidden>
+    <div class="hearts" aria-hidden="true"></div>
+
+    <div class="panda-corner">
+      <button class="press-image" type="button" aria-label="Squish the panda">
+        <img src="images/Panda.png" data-pressed-src="images/Squished_panda.png" alt="A panda" draggable="false">
+      </button>
+      <p class="panda-hint">Press me!</p>
+    </div>
     <header>
     </header>
 
@@ -43,13 +54,114 @@
         <a class="button" href="WhyILoveYou.html">See why</a>
       </section>
 
+      <section id="wheel-section" class="card-section wheel-section">
+        <p class="small-heading">Feeling lucky?</p>
+        <h2>Spin the wheel</h2>
+        <div class="wheel-wrap">
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <svg id="wheel" class="wheel" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+          <div class="wheel-hub" aria-hidden="true">♥</div>
+        </div>
+        <p id="wheel-result" class="wheel-result" aria-live="polite">Give it a spin ♥</p>
+        <button id="wheel-button" type="button">Spin</button>
+      </section>
+
+      <section id="coop" class="card-section reveal">
+        <p class="small-heading">Now loading...</p>
+        <h2>Co-op Mode</h2>
+        <div class="coop-card">
+          <div class="player">
+            <span class="player-tag">P1</span>
+            <strong>Me</strong>
+            <span class="player-ready">Ready ♥</span>
+          </div>
+          <div class="coop-plus" aria-hidden="true">+</div>
+          <div class="player player-two">
+            <span class="player-tag">P2</span>
+            <strong>You</strong>
+            <span class="player-ready">Ready ♥</span>
+          </div>
+        </div>
+
+        <div class="stat-row" data-final="∞">
+          <span class="stat-label">Love level</span>
+          <span class="stat-value">0%</span>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="stat-row" data-final="MAX">
+          <span class="stat-label">Teamwork</span>
+          <span class="stat-value">0%</span>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="stat-row" data-final="100%">
+          <span class="stat-label">Same Mario Kart 8 build</span>
+          <span class="stat-value">0%</span>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="stat-row" data-final="100%">
+          <span class="stat-label">Synced sense of humor</span>
+          <span class="stat-value">0%</span>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <p id="coop-message" class="coop-message" aria-live="polite"></p>
+        <button id="coop-button" class="coop-start" type="button">Press start</button>
+      </section>
+
+      <section id="coupons" class="card-section reveal">
+        <p class="small-heading">No expiry date, no questions asked</p>
+        <h2>Love Coupons</h2>
+        <p>Tap a coupon to redeem it.</p>
+        <div class="coupon-grid">
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">One game night</span>
+            <span class="coupon-sub">Your pick, zero complaints</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">One Mario Kart rematch</span>
+            <span class="coupon-sub">Same build, no excuses</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">One really long hug</span>
+            <span class="coupon-sub">No time limit</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">One late-night call</span>
+            <span class="coupon-sub">Any topic, as long as you want</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">You pick the movie</span>
+            <span class="coupon-sub">And I'll actually watch it</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+          <button class="coupon" type="button" aria-pressed="false">
+            <span class="coupon-title">One surprise</span>
+            <span class="coupon-sub">Redeem it to find out</span>
+            <span class="coupon-stamp" aria-hidden="true"><span>Redeemed</span></span>
+          </button>
+        </div>
+        <button id="coupon-reset" class="link-button" type="button">Reset coupons</button>
+      </section>
+
+      <section id="reason-box" class="card-section reveal">
+        <p class="small-heading">Running low on reasons? Never.</p>
+        <h2>Need a reason?</h2>
+        <div id="reason-card" class="reason-card" aria-live="polite">Tap the button ♥</div>
+        <button id="reason-button" type="button">Give me a reason</button>
+      </section>
+
       <section id="note">
         <h2>A note for you</h2>
         <p>Thank you for being exactly who you are. I'm so lucky to have you in my life. Open this after you're done reading the "see why" button.</p>
         <button id="note-button" type="button">Read one last thing</button>
-        <p id="extra-note" hidden>
-          No matter what, No matter where, I hope you remember that you are loved and cared so deeply by me. Forever and Always.
-        </p>
+        <div id="extra-note" hidden>
+          <p>No matter what, No matter where, I hope you remember that you are loved and cared so deeply by me. Forever and Always.</p>
+          <a class="button" href="Proposal.html">Dont Click Me.</a>
+        </div>
       </section>
     </main>
 

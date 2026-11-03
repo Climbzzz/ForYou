@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One More Thing</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="proposal.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Password screen -->
+  <main id="access-gate" class="access-gate">
+    <form id="access-form" class="access-card">
+      <p class="small-heading">I told you not to click this.</p>
+      <h1>This part is locked.</h1>
+      <label for="access-code">Enter the code when you think you're ready. I'll only tell you then.</label>
+      <input id="access-code" name="code" type="password" autocomplete="off" required>
+      <button type="submit">Unlock</button>
+      <p id="access-error" class="access-error" role="alert" aria-live="polite"></p>
+      <a class="back-link" href="index.html">Back</a>
+    </form>
+  </main>
+
+  <!-- The proposal (hidden until the code is entered) -->
+  <div id="proposal-content" class="page-content" hidden>
+    <div class="hearts" aria-hidden="true"></div>
+
+    <main class="proposal-stage">
+      <section class="proposal-card">
+        <div id="proposal-question">
+          <p class="small-heading">I've been wanting to ask you something...</p>
+          
+          <!-- EDIT THIS: write your own words here -->
+          <p class="proposal-message">
+            Write your personal message here. Tell her what she means to you and why you're asking.
+          </p>
+          <p class="small-heading">Will you be my girlfriend?</p>
+          <div class="proposal-buttons">
+            <button id="yes-button" type="button">Yes ♥</button>
+            <button id="no-button" type="button">No</button>
+          </div>
+        </div>
+
+        <div id="proposal-answer" class="proposal-answer" hidden>
+          <h2>You really accepted?!</h2>
+
+          <!-- EDIT THIS: what shows after she says yes -->
+          <p class="proposal-message">I can't wait to start our next chapter with each other.</p>
+          <nav>
+        <a class="button" href="index.html">Back To Home</a>
+      </nav>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
