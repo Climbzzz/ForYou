@@ -1,4 +1,4 @@
-const ACCESS_CODE = "ForLai";
+const ACCESS_CODE = "forlai";
 const ACCESS_KEY = "foryou-unlocked";
 const GATE_FADE_OUT_MS = 500;
 const REDUCED_FADE_OUT_MS = 300;
