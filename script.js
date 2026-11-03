@@ -531,16 +531,16 @@ function setupCoupons() {
 // "Give me a reason" button: shows every reason once before repeating any.
 const LOVE_REASONS = [
   "Somehow, you always know exactly what to say when I can't find the words.",
-  "You turn a quiet night in into my favorite part of the week.",
+  "You turn a quiet night in into my favourite part of the week.",
   "You celebrate my wins like they're your own.",
   "You make me want to be better without ever making me feel like I'm not enough.",
-  "Even your silliest moments are my favorite moments.",
+  "Even your silliest moments are my favourite moments.",
   "You notice the small things about me that I didn't think anyone saw.",
   "You're the first person I want to tell everything to, good or bad.",
   "You make the whole world feel a little softer.",
   "You get my jokes, even the terrible ones.",
   "I like who I get to be when I'm with you.",
-  "You're my favorite part of every single day."
+  "You're my favourite part of every single day."
 ];
 
 function setupReasonButton() {
