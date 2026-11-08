@@ -3,7 +3,7 @@
 // While it's empty, the page stays locked and nobody can get in.
 // When you're ready, put the code between the quotes, e.g. "MyCode".
 // ------------------------------------------------------------------
-const PROPOSAL_CODE = "";
+const PROPOSAL_CODE = "onelastthing";
 
 const ACCESS_KEY = "proposal-unlocked";
 
@@ -69,6 +69,26 @@ function spawnHeart(container, left, size) {
   heart.style.animationDuration = duration + "s";
   container.appendChild(heart);
   setTimeout(() => heart.remove(), duration * 1000);
+}
+
+// "For the question" button: reveals the question and the Yes / No buttons.
+const askButton = document.querySelector("#ask-button");
+const questionReveal = document.querySelector("#question-reveal");
+
+// (The if-check keeps the rest of the page working even if the button is missing from the HTML.)
+if (askButton && questionReveal) {
+  askButton.addEventListener("click", () => {
+    askButton.hidden = true;
+    questionReveal.hidden = false;
+
+    // Fade the question in (a little slide up, unless reduced motion is on).
+    questionReveal.animate(
+      prefersReducedMotion.matches
+        ? [{ opacity: 0 }, { opacity: 1 }]
+        : [{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "translateY(0)" }],
+      { duration: prefersReducedMotion.matches ? 300 : 800, easing: "ease" }
+    );
+  });
 }
 
 // The "No" button runs away, and "Yes" grows a little each time.
